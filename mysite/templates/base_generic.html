@@ -17,7 +17,7 @@
       {% block sidebar %}
         <ul class="sidebar-nav bg-light" style="list-style:none">
           {% if user.is_anonymous %}
-          <a href="{% url 'sign-up' %}"><li>Sign Up</li></a>
+          <a href="{% url 'sign-up' %}"><li>Sign-Up</li></a>
           {% endif %}
          {% if user.is_authenticated %}
            <li>User: {{ user.get_username }}</li>
