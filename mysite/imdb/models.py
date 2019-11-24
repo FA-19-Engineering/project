@@ -10,8 +10,8 @@ from RequestBuilder import MovieRequest, SearchRequest
 # Create your models here.
 # This is where requests will be made via Request.py in modules
 class MovieModel:
-    def __init__(self, genre):
-        searchReq = SearchRequest("Guardians")
+    def __init__(self, movieTitle):
+        searchReq = SearchRequest(movieTitle)
         searchReq.makeRequest()
 
         self._movies = []
@@ -22,7 +22,9 @@ class MovieModel:
             
             currObj = {
                 "title":currRequest.getTitle(),
+                "year":currRequest.getYear(),
                 "rated":currRequest.getRated(),
+                "released":currRequest.getReleaseDate(),
                 "runtime":currRequest.getRuntime(),
                  "plot":currRequest.getPlot()
             }

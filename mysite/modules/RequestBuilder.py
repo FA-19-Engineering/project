@@ -76,26 +76,15 @@ class MovieRequest(Request.RequestHandler):
             self.url = "%s&type=%s" % (self.url, self._search_type)
         if self._plot_type != "":
             self.url = "%s&plot=%s" % (self.url, self._plot_type)
+
+        print(self.url)
         
 
 if __name__ == "__main__":
-    '''
-    req1 = MovieRequest()
-    req1.setMovieId("tt0298203") # imdbID for 8 mile
-    req1.setSearchType("movie")
-    req1.setPlotType("short")
-    #make request
-    req1.makeRequest()
-    print(req1.getTitle())
-    print(req1.getRated())
-    print(req1.getGenre())
-    print(req1.getPlot())
-    '''
-    '''
-    req2 = SearchRequest()
-    req2.setTitle("Guardians")
-    req2.setSearchType("movie")
-    req2.makeRequest()
-    for i in range(0, 10):
-        print(req2.getTitle(i))
-    '''
+    searchReq = SearchRequest("Guardians")
+    searchReq.makeRequest()
+
+    for i in range(9):
+        currRequest = MovieRequest()
+        currRequest.setMovieId(searchReq.getId(i))
+        currRequest.makeRequest()

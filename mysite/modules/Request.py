@@ -112,11 +112,9 @@ class RequestHandler(Request):
         # Make request to current url
         # Send request
         response = requests.get(self.url)
-        print(self.url)
         if (response.status_code == 200):
+            self._json = response.json()
             if (response.json()["Response"] == 'True'):
-                print("Success")
-                self._json = response.json()
                 self.storeQuery(self._json)
             else:
                 print("Unable to find Request")

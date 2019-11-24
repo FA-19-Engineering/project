@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <form action="/imdb/movie_display" id="searchForm" method="GET">
+    <div class="form-group">
+      <input type="text" name="searchVal" maxLength=10/><br /><br />
+      <input type="submit" value="Submit" class="btn btn-primary"/>
+      <div class="valid-feedback">Valid Input</div>
+      <div class="invalid-feedback">Please enter a search query</div>
+    </div>
+  </form>
+{% endblock %}
