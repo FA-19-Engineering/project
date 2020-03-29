@@ -20,6 +20,3 @@ def sign_up(request):
     else:
         form = UserCreationForm()
     return render(request, 'sign_up.html',{'form':form})
-
-def settings(request):
-    return render(request, 'settings.html')

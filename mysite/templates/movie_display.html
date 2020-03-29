@@ -1,54 +1,13 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1 class="display-5"> Titles related to "{{ userSearch }}" </h1>
-  <p>
-    <table class="table table-striped mr-sm-3">
-      <thead class="thead-dark">
-        <tr>
-          <th>
-            Title
-          </th>
-          <th>
-            Released
-          </th>
-          <th class="px-sm-4">
-            Rated
-          </th>
-          <th class="px-sm-5">
-            Genre
-          </th>
-          <th class="px-sm-4">
-            Plot
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for movie in searchResult %}
-        <tr>
-            <td>
-              <span onclick="alert('{{movie.title}}')" class="fas fa-plus-circle add-btn"></span>  {{movie.title}}
-            </td>
-            <td>
-              {{movie.year}}
-            </td>
-            <td>
-              {{movie.rated}}
-            </td>
-            <td>
-              {{movie.released}}
-            </td>
-            <td>
-              {{movie.genre}}
-            </td>
-        </tr>
-        <tr>
-          <td class="w-50">
-            {{movie.plot}}
-          </td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  <p>
+<h2>Movies</h2>
+<form id="saveForm" action="/movies/save_movie" method="POST">
+{% csrf_token %}
+{% for movie in movies %}
+    <input type="checkbox" name="choices" id="{{ movie.mID }}" value="{{ movie.posterURL }}">
+    <li>{{ movie.title }}-{{ movie.year }} <img src="{{ movie.posterURL }}"> </li>
+{% endfor %}
+<input class="btn btn-primary text-center save" type="submit" value="save">
+</form>
 {% endblock %}
